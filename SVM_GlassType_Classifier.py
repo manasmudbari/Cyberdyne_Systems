@@ -6,20 +6,20 @@ import os
 import numpy as np
 from sklearn import svm
 
-def readData(cutoff, id1, idn):
-	df = pd.read_csv("~/Desktop/glassType.txt")
-	df = df.iloc[np.random.permutation(len(df))]
-	df_train_cont, df_test_cont = df[:cutoff], df[cutoff+1:]
-	df_train = df_train_cont[df_train_cont.columns[id1:idn]]
-	df_labels = df_train_cont[df_train_cont.columns[idn]]
-	df_test = df_test_cont[df_test_cont.columns[id1:idn]
-	df_test_label = df_test_cont[df_test_cont.columns[idn]]
-	trainList = df_train.values.tolist()
-	trainLabels = df_labels.values.tolist()
-	testList = df_test.values.tolist()
-	testLabel = df_test_label.values.tolist()
-	testLabelnp = np.array(testLabel)
-	return trainList, trainLabels, testList, testLabelnp
+
+df = pd.read_csv("~/Desktop/glassType.txt")
+df = df.iloc[np.random.permutation(len(df))]
+df_train_cont, df_test_cont = df[:149], df[149:]
+df_train = df_train_cont[df_train_cont.columns[1:10]]
+df_labels = df_train_cont[df_train_cont.columns[10]]
+df_test = df_test_cont[df_test_cont.columns[1:10]]
+df_test_label = df_test_cont[df_test_cont.columns[10]]
+trainList = df_train.values.tolist()
+trainLabels = df_labels.values.tolist()
+testList = df_test.values.tolist()
+testLabel = df_test_label.values.tolist()
+testLabelnp = np.array(testLabel)
+
 
 clf = svm.SVC()
 clf.fit(trainList, trainLabels)
