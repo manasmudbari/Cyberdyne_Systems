@@ -9,6 +9,7 @@ from sklearn import svm
 
 df = pd.read_csv("~/Desktop/glassType.txt")
 df = df.iloc[np.random.permutation(len(df))]
+df_norm = (df - df.mean()) / (df.max() - df.min())
 df_train_cont, df_test_cont = df[:149], df[149:]
 df_train = df_train_cont[df_train_cont.columns[1:10]]
 df_labels = df_train_cont[df_train_cont.columns[10]]
@@ -48,7 +49,8 @@ import matplotlib.pyplot as plt
 from pandas.tools.plotting import scatter_matrix
 #df_train_plotX = df_train_cont[df_train_cont.columns[1]]
 #df_train_plotY = df_train_cont[df_train_cont.columns[3]]
-df_plot = df[df.columns[1:10]]
+df_plot = df_norm[df_norm.columns[1:10]]
 scatter_matrix(df_plot, alpha=0.2, figsize=(20, 20), diagonal='kde')
+
 
 
