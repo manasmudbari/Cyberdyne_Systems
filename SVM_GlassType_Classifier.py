@@ -38,7 +38,7 @@ sub = np.subtract(testLabelnp, predict)
 
 
 # In[125]:
-
+#counting error
 errorCount = 0
 i = 0
 for i in range(len(sub)):
