@@ -43,7 +43,11 @@ accuracy = 100-errorPct
 print "accuracy is %s" %errorPct + "%"
 
 
-# In[ ]:
-
+#import matplotlib.pyplot as plt
+#%matplotlib inline
+from pandas.tools.plotting import scatter_matrix
+#df_train_plotX = df_train_cont[df_train_cont.columns[1]]
+#df_train_plotY = df_train_cont[df_train_cont.columns[3]]
+scatter_matrix(df_train, alpha=0.2, figsize=(10, 10), diagonal='kde')
 
 
